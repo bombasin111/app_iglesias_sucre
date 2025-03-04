@@ -2,8 +2,8 @@
 // conexion.php
 $host = ('dpg-cv1ok2d6l47c73fi3rn0-a');       // Host de la base de datos
 $dbname = ('iglesias_localidad');     // Nombre de la base de datos
-$user = ('cumpa_user');       // Usuario de la base de datos
-$password = ('Bom111Ba'); // Contraseña de la base de datos
+$user = ('bombasin111');       // Usuario de la base de datos
+$password = ('Cumpa123-'); // Contraseña de la base de datos
 
 try {
     $conexion = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
