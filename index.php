@@ -30,10 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar_global'])) {
     $usuario_global = $_POST['usuario_global'];
     $contrasena_global = $_POST['contrasena_global']; // <span style="color: red;">Cambiado de $contraseña_global a $contrasena_global</span>
 
-    // Depuración: Mostrar los valores ingresados
-    echo "Usuario ingresado: $usuario_global<br>";
-    echo "Contraseña ingresada: $contrasena_global<br>"; // <span style="color: red;">Cambiado de $contraseña_global a $contrasena_global</span>
-
 // Obtener la contraseña en texto plano desde la base de datos
 $query = $conexion->prepare("SELECT id, contrasena FROM iglesias WHERE usuario = ?"); // <span style="color: red;">Cambiado de contraseña a contrasena</span>
 $query->execute([$usuario_global]);
