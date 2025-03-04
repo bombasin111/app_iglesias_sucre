@@ -95,10 +95,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="col-md-3">
                             <div class="form-group">
                                 <center><label class="form-label text-center">CI</label></center>
-                                <input type="number1"
+                                <input type="number"
                                        name="ci" 
                                        class="form-control"
-                                       value="<?= htmlspecialchars($feligres['ci']) ?>">
+                                       value="<?= htmlspecialchars($f['ci'] ?? '') ?>">
                             </div>
                         </div>
                         
