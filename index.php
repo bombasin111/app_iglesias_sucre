@@ -10,7 +10,7 @@ if (isset($_SESSION['id_iglesia'])) {
 
 // Obtener lista de iglesias desde la base de datos
 $pdo = new PDO('pgsql:host=tdpg-cv1ok2d6l47c73fi3rn0-a.oregon-postgres.render.com;dbname=iglesias_localidad_0nd1', 'usuario', 'contrasena');
-$query = $conexion->query("SELECT id, nombre FROM iglesias");
+$query = $pdo->query("SELECT id, nombre FROM iglesias");
 $iglesias = $query->fetchAll();
 
 // Procesar el formulario de autenticación para la búsqueda global
