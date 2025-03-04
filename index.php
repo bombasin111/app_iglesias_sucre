@@ -21,8 +21,6 @@ try {
     $query = $pdo->query("SELECT id, nombre FROM iglesias");
     $iglesias = $query->fetchAll();
 
-    // Imprime los resultados para verificar
-    print_r($iglesias);
 } catch (PDOException $e) {
     echo "Error de conexión: " . $e->getMessage();
 }
