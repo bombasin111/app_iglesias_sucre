@@ -18,23 +18,8 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION // Habilita excepciones para errores
     ]);
 
-    // Verificar si la tabla "iglesias" existe
-    try {
-        $pdo->query("SELECT 1 FROM iglesias LIMIT 1");
-    } catch (PDOException $e) {
-        // Si la tabla no existe, créala
-        $pdo->exec("CREATE TABLE iglesias (
-            id SERIAL PRIMARY KEY,
-            nombre VARCHAR(255) NOT NULL,
-            usuario VARCHAR(255) NOT NULL,
-            contrasena TEXT NOT NULL
-        )");
-        echo "Tabla 'iglesias' creada correctamente.<br>";
-    }
-
-    // Obtener lista de iglesias
     $query = $pdo->query("SELECT id, nombre FROM iglesias");
-    $iglesias = $query->fetchAll(PDO::FETCH_ASSOC);
+    $iglesias = $query->fetchAll();
 
     // Imprime los resultados para verificar
     print_r($iglesias);
@@ -45,32 +30,32 @@ try {
 // Procesar el formulario de autenticación para la búsqueda global
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar_global'])) {
     $usuario_global = $_POST['usuario_global'];
-    $contrasena_global = $_POST['contrasena_global'];
+    $contrasena_global = $_POST['contrasena_global']; // <span style="color: red;">Cambiado de $contraseña_global a $contrasena_global</span>
 
     // Depuración: Mostrar los valores ingresados
     echo "Usuario ingresado: $usuario_global<br>";
-    echo "Contraseña ingresada: $contrasena_global<br>";
+    echo "Contraseña ingresada: $contrasena_global<br>"; // <span style="color: red;">Cambiado de $contraseña_global a $contrasena_global</span>
 
-    // Obtener la contraseña en texto plano desde la base de datos
-    $query = $pdo->prepare("SELECT id, contrasena FROM iglesias WHERE usuario = ?");
-    $query->execute([$usuario_global]);
-    $usuario = $query->fetch();
+// Obtener la contraseña en texto plano desde la base de datos
+$query = $conexion->prepare("SELECT id, contrasena FROM iglesias WHERE usuario = ?"); // <span style="color: red;">Cambiado de contraseña a contrasena</span>
+$query->execute([$usuario_global]);
+$usuario = $query->fetch();
 
-    if ($usuario) {
-        // Verificar la contraseña en texto plano
-        if ($contrasena_global === $usuario['contrasena']) {
-            // Autenticación exitosa para búsqueda global
-            $_SESSION['busqueda_global'] = true;
-            header('Location: buscar_global.php');
-            exit;
-        } else {
-            $error_global = "Usuario o contraseña incorrectos.";
-            echo "Error: $error_global<br>"; // Depuración: Mostrar el error
-        }
+if ($usuario) {
+    // Verificar la contraseña en texto plano
+    if ($contrasena_global === $usuario['contrasena']) { // <span style="color: red;">Comparación directa en texto plano</span>
+        // Autenticación exitosa para búsqueda global
+        $_SESSION['busqueda_global'] = true;
+        header('Location: buscar_global.php');
+        exit;
     } else {
         $error_global = "Usuario o contraseña incorrectos.";
         echo "Error: $error_global<br>"; // Depuración: Mostrar el error
     }
+} else {
+    $error_global = "Usuario o contraseña incorrectos.";
+    echo "Error: $error_global<br>"; // Depuración: Mostrar el error
+}
 }
 ?>
 
