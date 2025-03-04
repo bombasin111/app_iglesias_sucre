@@ -168,6 +168,7 @@ $feligreses = $query_feligreses->fetchAll();
                         
                         <div class="from-grup mb-4">
                             <center><label class="form-label">Sacramentos:</label></center>
+                            <form id="formFeligres" method="POST">
                             <div class="gap-4 d-md-flex justify-content-md-center">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" name="bautizo" id="bautizo">
@@ -182,8 +183,8 @@ $feligreses = $query_feligreses->fetchAll();
                                     <label class="form-check-label" for="matrimonio">Matrimonio</label>
                                 </div>
                             </div>
+                            </form>
                         </div>
-                        
                         <div class="col-md-12 text-center">
                             <button type="submit" class="btn btn-success px-5">Guardar</button>
                         </div>
@@ -214,9 +215,9 @@ $feligreses = $query_feligreses->fetchAll();
                             <?php foreach ($feligreses as $f): ?>
                             <tr>
                                 <td><?= htmlspecialchars($f['nombre']) ?></td>
-                                <td class="text-center"><?= htmlspecialchars($f['ci']) ?? 'N/A' ?></td>
+                                <td class="text-center"><?= htmlspecialchars($f['ci'] ?? 'N/A') ?></td>
                                 <td><?= htmlspecialchars(date('d/m/Y', strtotime($f['fecha_nacimiento']))) ?></td>
-                                <td class="text-center"><?= htmlspecialchars($f['pag']) ?? 'N/A' ?></td>
+                                <td class="text-center"><?= htmlspecialchars($f['pag'] ?? 'N/A') ?></td>
                                 <td class="text-center"><?= htmlspecialchars($f['bautizo']) ? '<span style="color: #2ecc71; opacity: 0.5;">✅</span>' : '<span style="color: #e74c3c; opacity: 0.5;">❌</span>' ?></td>
                                 <td class="text-center"><?= htmlspecialchars($f['confirmacion']) ? '<span style="color: #2ecc71; opacity: 0.5;">✅</span>' : '<span style="color: #e74c3c; opacity: 0.5;">❌</span>' ?></td>
                                 <td class="text-center"><?= htmlspecialchars($f['matrimonio']) ? '<span style="color: #2ecc71; opacity: 0.5;">✅</span>' : '<span style="color: #e74c3c; opacity: 0.5;">❌</span>' ?></td>
@@ -238,7 +239,20 @@ $feligreses = $query_feligreses->fetchAll();
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById('formFeligres').addEventListener('submit', function(event) {
+            // Obtener los checkboxes
+            const bautizo = document.getElementById('bautizo').checked;
+            const confirmacion = document.getElementById('confirmacion').checked;
+            const matrimonio = document.getElementById('matrimonio').checked;
 
+            // Verificar si al menos uno está seleccionado
+            if (!bautizo && !confirmacion && !matrimonio) {
+                alert('Por favor, selecciona al menos una opción (Bautizo, Confirmación o Matrimonio).');
+                event.preventDefault(); // Evitar que el formulario se envíe
+            }
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
