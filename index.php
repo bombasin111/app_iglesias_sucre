@@ -9,9 +9,27 @@ if (isset($_SESSION['id_iglesia'])) {
 }
 
 // Obtener lista de iglesias desde la base de datos
-$pdo = new PDO('pgsql:host=tdpg-cv1ok2d6l47c73fi3rn0-a.oregon-postgres.render.com;dbname=iglesias_localidad_0nd1', 'usuario', 'contrasena');
-$query = $pdo->query("SELECT id, nombre FROM iglesias");
-$iglesias = $query->fetchAll();
+$dsn = 'pgsql:host=tdpg-cv1ok2d6l47c73fi3rn0-a.oregon-postgres.render.com;dbname=iglesias_localidad_0nd1;sslmode=require';
+$usuario = 'usuario'; // Reemplaza con tu usuario correcto
+$contrasena = 'contrasena'; // Reemplaza con tu contraseña correcta
+
+$dsn = 'pgsql:host=tdpg-cv1ok2d6l47c73fi3rn0-a.oregon-postgres.render.com;dbname=iglesias_localidad_0nd1;sslmode=require';
+$usuario = 'usuario'; // Reemplaza con tu usuario correcto
+$contrasena = 'contrasena'; // Reemplaza con tu contraseña correcta
+
+try {
+    $pdo = new PDO($dsn, $usuario, $contrasena, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION // Habilita excepciones para errores
+    ]);
+
+    $query = $pdo->query("SELECT id, nombre FROM iglesias");
+    $iglesias = $query->fetchAll();
+
+    // Imprime los resultados para verificar
+    print_r($iglesias);
+} catch (PDOException $e) {
+    echo "Error de conexión: " . $e->getMessage();
+}
 
 // Procesar el formulario de autenticación para la búsqueda global
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar_global'])) {
