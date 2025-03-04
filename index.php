@@ -10,12 +10,8 @@ if (isset($_SESSION['id_iglesia'])) {
 
 // Obtener lista de iglesias desde la base de datos
 $dsn = 'pgsql:host=tdpg-cv1ok2d6l47c73fi3rn0-a.oregon-postgres.render.com;dbname=iglesias_localidad_0nd1;sslmode=require';
-$usuario = 'usuario'; // Reemplaza con tu usuario correcto
-$contrasena = 'contrasena'; // Reemplaza con tu contraseña correcta
-
-$dsn = 'pgsql:host=tdpg-cv1ok2d6l47c73fi3rn0-a.oregon-postgres.render.com;dbname=iglesias_localidad_0nd1;sslmode=require';
-$usuario = 'usuario'; // Reemplaza con tu usuario correcto
-$contrasena = 'contrasena'; // Reemplaza con tu contraseña correcta
+$usuario = 'bombasin111'; // Reemplaza con tu usuario correcto
+$contrasena = 'LOGlCiLdaP9T6a5O8PN3QM6A9Er7xul3'; // Reemplaza con tu contraseña correcta
 
 try {
     $pdo = new PDO($dsn, $usuario, $contrasena, [
