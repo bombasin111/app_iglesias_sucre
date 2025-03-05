@@ -168,8 +168,8 @@ $feligreses = $query_feligreses->fetchAll();
                         
                         <div class="from-grup mb-4">
                             <center><label class="form-label">Sacramentos:</label></center>
+                        <form id="formFeligres" method="POST">
                             <div class="gap-4 d-md-flex justify-content-md-center">
-                            <form id="formFeligres" method="POST">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" name="bautizo" id="bautizo">
                                     <label class="form-check-label" for="bautizo">Bautizo</label>
@@ -183,11 +183,12 @@ $feligreses = $query_feligreses->fetchAll();
                                     <label class="form-check-label" for="matrimonio">Matrimonio</label>
                                 </div>
                             </div>
-                            </form>
+                            
                         </div>
                         <div class="col-md-12 text-center">
                             <button type="submit" class="btn btn-success px-5">Guardar</button>
                         </div>
+                        </form>
                     </div>
                 </form>
             </div>
