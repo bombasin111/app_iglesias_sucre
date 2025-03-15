@@ -115,8 +115,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         
                         <div class="col-md-3">
                             <div class="form-group">
-                                <center><label class="form-label">Página:</label></center>
-                                <input type="number" 
+                                <center><label class="form-label">Libro-Pág:</label></center>
+                                <input type="text" 
                                        name="pag" 
                                        class="form-control"
                                        value="<?= htmlspecialchars($feligres['pag']) ?>">
