@@ -162,8 +162,8 @@ $feligreses = $query_feligreses->fetchAll();
                         </div>
                         
                         <div class="col-md-2">
-                            <center><label class="form-label">Pág</label></center>
-                            <input type="number" name="pag" class="form-control">
+                            <center><label class="form-label">Libro-Pág</label></center>
+                            <input type="text" name="pag" class="form-control">
                         </div>
                         
                         <div class="from-grup mb-4">

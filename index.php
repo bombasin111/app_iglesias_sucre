@@ -58,7 +58,7 @@ if ($usuario) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenida - Iglesias de la Localidad</title>
+    <title>Bienvenid@ - Parroquias de la Localidad</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -109,13 +109,13 @@ if ($usuario) {
 </head>
 <body>
     <div class="container">
-        <h1>Seleccione su Iglesia</h1>
+        <h1>Seleccione su Parroquia</h1>
         <h2>Usuario y Contraseña</h2>
         <form method="POST" action="login.php">
             <div class="mb-3">
-                <label for="iglesia" class="form-label">Iglesia:</label>
+                <label for="iglesia" class="form-label">Parroquia:</label>
                 <select class="form-control" name="iglesia" required>
-                    <option value="">-- Elija una iglesia --</option>
+                    <option value="">-- Elija una Parroquia --</option>
                     <?php foreach ($iglesias as $iglesia): ?>
                         <option value="<?= htmlspecialchars($iglesia['id']) ?>"><?= htmlspecialchars($iglesia['nombre']) ?></option>
                     <?php endforeach; ?>

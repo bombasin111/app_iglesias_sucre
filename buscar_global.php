@@ -80,7 +80,7 @@ if (isset($_GET['buscar'])) {
                                         <th class="col-1 text-center">Bautizo</th>
                                         <th class="col-1 text-center">Confirmación</th>
                                         <th class="col-1 text-center">Matrimonio</th>
-                                        <th class="text-center">Iglesia</th>
+                                        <th class="text-center">Parroquia</th>
                                     </tr>
                                 </thead>
                                 <tbody>
