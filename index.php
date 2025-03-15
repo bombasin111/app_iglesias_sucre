@@ -18,7 +18,17 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION // Habilita excepciones para errores
     ]);
 
-    $query = $pdo->query("SELECT id, nombre FROM iglesias");
+    // Consulta SQL con orden personalizado
+    $query = $pdo->query("
+        SELECT id, nombre 
+        FROM iglesias 
+        ORDER BY 
+            CASE 
+                WHEN id = 1 THEN 0 
+                ELSE 1 
+            END, 
+            id ASC
+    ");
     $iglesias = $query->fetchAll();
 
 } catch (PDOException $e) {
